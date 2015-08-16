@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <!-- search for React.js and go to downloads -->
+    <script src="https://fb.me/react-0.13.3.js"></script>
+    <script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
+    <!-- search for Bootstrap and go to downloads -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  </head>
+  <body>
+  </body>
+
+  <!-- processed by JSX not by the browser -->
+  <script type='text/jsx'>
+    // step 1 - define  a class (shape and form) aka component
+    var Badge = React.createClass({
+      render: function() {
+        return(
+          <button className="btn btn-primary" type="button">
+            {this.props.title} <span className="badge">{this.props.number}</span>
+          </button>
+        );
+      }
+    });
+
+    var options = {
+      title:  'Inbox',
+      number: 32
+    };
+
+    // step 2 - instantiate class and render
+    var element = React.createElement(Badge, options);
+
+    // step 3 - place instantiation in my body tag
+    React.render(element, document.body);
+  </script>
+
+</html>
