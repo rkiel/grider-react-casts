@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <!-- search for React.js and go to downloads -->
+    <script src="https://fb.me/react-0.13.3.js"></script>
+    <script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
+  </head>
+  <body>
+  </body>
+
+  <!-- processed by JSX not by the browser -->
+  <script type='text/jsx'>
+    // step 1 - define  a class (shape and form) aka component
+    var HelloWorld = React.createClass({
+      render: function() {
+        return(
+          <div>Hello World</div>
+        );
+      }
+    });
+
+    // step 2 - instantiate class and render
+    var element = React.createElement(HelloWorld);
+
+    // step 3 - place instantiation in my body tag
+    React.render(element, document.body);
+  </script>
+
+</html>
