@@ -18,4 +18,4 @@
     var element = React.createElement(ThumbnailList, options);
 
     // step 3 - place instantiation in my body tag
-    React.render(element, document.querySelector('.target'));
+    React.render(element, document.querySelector('.container'));
