@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <!-- search for React.js and go to downloads -->
+    <script src="https://fb.me/react-0.13.3.js"></script>
+    <script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
+    <!-- search for Bootstrap and go to downloads -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class='container'>
+      <div class='row'>
+        <div class='col-sm-5 target'>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <!-- processed by JSX not by the browser -->
+  <script type='text/jsx'>
+    // step 1 - define  a class (shape and form) aka component
+    var Badge = React.createClass({
+      render: function() {
+        return(
+          <button className="btn btn-primary" type="button">
+            {this.props.title} <span className="badge">{this.props.number}</span>
+          </button>
+        );
+      }
+    });
+
+    var Thumbnail = React.createClass({
+      render: function() {
+        return(
+        <div className="thumbnail">
+          <img src={this.props.imageUrl} />
+          <div className="caption">
+            <h3>{this.props.header}</h3>
+            <p>{this.props.description}</p>
+            <p>
+              <Badge title={this.props.title} number={this.props.number} />
+            </p>
+          </div>
+        </div>
+        );
+      }
+    });
+
+    var ThumbnailList = React.createClass({
+      render: function() {
+        var list = this.props.thumbnailData.map(function(thumbnailProps) {
+          return (
+            <Thumbnail {...thumbnailProps}/>
+          );
+        });
+        return (
+          <div>{list}</div>
+        );
+      }
+    });
+
+    var options = {
+      thumbnailData: [ {
+        title:  'See Tutorials',
+        number: 32,
+        header: 'Learn React',
+        description: 'React is a fantastic new libary for making fast, dynamic pages. React is a fantastic new libary for making fast, dynamic pages. React is a fantastic new libary for making fast, dynamic pages. React is a fantastic new libary for making fast, dynamic pages.     React is a fantastic new libary for making fast, dynamic pages.  ',
+        imageUrl: 'https://cdn.auth0.com/blog/react-js/react.png'
+      }, {
+        title:  'See Courses',
+        number: 25,
+        header: 'Learn Gulp',
+        description: 'Gulp will speed up your development workflow. Gulp will speed up your development workflow. Gulp will speed up your development workflow.    Gulp will speed up your development workflow.  ',
+        imageUrl: 'https://raw.githubusercontent.com/gulpjs/artwork/master/gulp-2x.png'
+      } ]
+    };
+
+    // step 2 - instantiate class and render
+    var element = React.createElement(ThumbnailList, options);
+
+    // step 3 - place instantiation in my body tag
+    React.render(element, document.querySelector('.target'));
+  </script>
+
+</html>
