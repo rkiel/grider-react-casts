@@ -1,5 +1,4 @@
 .vagrant
 node_modules
 npm-debug.log
-application.js
-main.js
+public
